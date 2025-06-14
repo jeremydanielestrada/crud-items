@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
 
-Route::middleware('api')->get('/ping', function () {
-    return response()->json(['message' => 'API is working']);
-});
+
+
+
+ Route::post('/user',            [UserController::class, 'store'])->name('user.store');
