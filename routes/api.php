@@ -45,4 +45,4 @@ use App\Http\Controllers\Api\ProfileController;
     //User specific API's
         Route::get('/profile',          [ProfileController::class, 'show']);
         Route::put('/profile/image/',   [ProfileController::class, 'image'])->name('profile.image');
-});
+}); 

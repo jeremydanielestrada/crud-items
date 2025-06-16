@@ -23,7 +23,7 @@ class ItemsRequest extends FormRequest
     {
        return [
             'item_name'      => 'string|max:255',
-            'image_path'     => 'required|max:255',
+            'image_path'     => 'required|image|mimes:jpg,gif,png|max:5120',
             'price'          =>'required|decimal:2',
             'description'    => 'string|nullable|max:255',
         ];

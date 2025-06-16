@@ -18,7 +18,7 @@ class Items extends Model
     //The attributes that are mass assignable
     protected $fillable = [
         'item_name',
-        'image_path',
+        'image_path',   
         'price',
         'description',
         'user_id',
