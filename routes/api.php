@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\ProfileController;
 
 
 //Public API's
- Route::post('/login',            [AuthController::class, 'store'])->name('user.store');
+ Route::post('/login',            [AuthController::class, 'login'])->name('user.login');
  Route::post('/user',             [UserController::class, 'store'])->name('user.store');
 
 
@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\ProfileController;
                 //Carousel Items Routes
  Route::controller(ItemsController::class)->group(function () {
         Route::get('/item',        'index');
+        Route::post('/item',        'store');
         Route::get('/item/{id}',   'show');
         Route::put('/item/{id}',   'update');
         Route::delete('/item/{id}','destroy');

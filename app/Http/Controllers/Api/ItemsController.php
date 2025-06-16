@@ -26,11 +26,13 @@ class ItemsController extends Controller
      */
     public function store(ItemsRequest $request)
     {
-        //
+        
         $validated = $request->validated();
+        
+         // Attach the logged-in user's ID/relationship with the user
 
+        $validated['user_id'] = $request->user()->id;
         $item = Items::create($validated);
-
         return $item;
 
 
