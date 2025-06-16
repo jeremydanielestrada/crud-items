@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ItemsController;
 use App\Http\Controllers\Api\ProfileController;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 
 
@@ -18,7 +19,7 @@ use App\Http\Controllers\Api\ProfileController;
 
 
  //Private API's
- Route::middleware(['auth:sanctum'])->group(function () {
+ Route::middleware([EnsureFrontendRequestsAreStateful::class, 'auth:sanctum'])->group(function () {
          Route::post('/logout',        [ AuthController::class, 'logout']);
 
                 //Carousel Items Routes
