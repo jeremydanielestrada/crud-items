@@ -12,7 +12,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 
 
-//Public API's
+                //Public API's
  Route::post('/login',            [AuthController::class, 'login'])->name('user.login');
  Route::post('/user',             [UserController::class, 'store'])->name('user.store');
 
@@ -22,7 +22,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
  Route::middleware([EnsureFrontendRequestsAreStateful::class, 'auth:sanctum'])->group(function () {
          Route::post('/logout',        [ AuthController::class, 'logout']);
 
-                //Carousel Items Routes
+                // Items Routes
  Route::controller(ItemsController::class)->group(function () {
         Route::get('/item',        'index');
         Route::post('/item',        'store');
@@ -32,7 +32,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
     });
 
 
-    //User Routes
+             //User Routes
  Route::controller(UserController::class)->group(function () {
         Route::get('/user',              'index');
         Route::get('/user/{id}',         'show');
