@@ -19,13 +19,14 @@ class ItemsRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-       return [
+   public function rules(): array
+{
+      return [
             'item_name'      => 'string|max:255',
             'image_path'     => 'required|image|mimes:jpg,gif,png|max:5120',
             'price'          =>'required|numeric',
             'description'    => 'string|nullable|max:255',
         ];
-    }
+}
+
 }

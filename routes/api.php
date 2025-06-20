@@ -46,4 +46,4 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
     //User specific API's
         Route::get('/profile',          [ProfileController::class, 'show']);
         Route::put('/profile/image/',   [ProfileController::class, 'image'])->name('profile.image');
-}); 
+});     
