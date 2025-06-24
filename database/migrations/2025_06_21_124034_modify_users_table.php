@@ -17,7 +17,7 @@ return new class extends Migration
             $table->renameColumn('name','last_name');
             
         });
-    }
+    }   
 
 
     /**

@@ -15,13 +15,19 @@ class ItemsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //Return all the data from the items table
-        return Items::all();
+        $query = Items::query();
+
+      if ($request->has('q')) {
+        $search = $request->input('q');
+        $query->where('item_name', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%");
+              }
+
+         return $query->get();
     }
 
-  
 
     /**
      * Store a newly created resource in storage.
@@ -52,7 +58,6 @@ class ItemsController extends Controller
      */
     public function show(string $id)
     {
-        //
         return Items::findOrFail($id);
         
     }

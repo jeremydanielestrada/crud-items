@@ -14,14 +14,18 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
      use HasApiTokens, HasFactory, Notifiable;
 
+     public function inventories() {
+    return $this->hasMany(Inventory::class);
+}
+
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'firstname',
-        'lastname',
+        'first_name',
+        'last_name',
         'role',
         'email',
         'password',
@@ -41,7 +45,10 @@ class User extends Authenticatable
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
+     * 
      */
+
+     
     protected function casts(): array
     {
         return [

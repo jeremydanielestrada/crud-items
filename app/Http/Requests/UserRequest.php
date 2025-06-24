@@ -30,9 +30,9 @@ class UserRequest extends FormRequest
 
         return [
             //Set rules
-            "firstname"      => "required|string|max:255",
-            "lastname"       => "required|string|max:255",
-            "role"           => "nillable|string",
+            "first_name"      => "required|string|max:255",
+            "last_name"       => "required|string|max:255",
+            "role"           => "nullable|string",
             "email"          => "required|string|email|unique:App\Models\User,email|max:255",
             "password"       => "required|min:8|confirmed",
             

@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         //
 
-        return user::all();
+        return User::all();
     }
 
    
@@ -28,14 +28,23 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(UserRequest $request)
-    {
-        //
-         $validated = $request->validated();
-         $validated['password'] = Hash::make($validated['password']);
 
-         $user = User::create($validated);
+    
+    {  $validated = $request->validated();
 
-         return $user;
+        $validated['password'] = Hash::make($validated['password']);
+
+        $user = User::create($validated);
+
+
+
+       $response = [
+        'user' => $user,
+        'token' => $user->createToken('auth-token')->plainTextToken
+    ];
+    
+
+    return response()->json($response);
         
     }
 

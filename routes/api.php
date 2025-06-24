@@ -25,7 +25,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
                 // Items Routes
  Route::controller(ItemsController::class)->group(function () {
         Route::get('/item',        'index');
-        Route::post('/item',        'store');
+        Route::post('/item',        'store'); 
         Route::get('/item/{id}',   'show');
         Route::put('/item/{id}',   'update');
         Route::delete('/item/{id}','destroy');

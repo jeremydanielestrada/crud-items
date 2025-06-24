@@ -8,10 +8,16 @@ class Items extends Model
 {
       //The table associated with the model
 
+    public function inventories() {
+    return $this->hasMany(Inventory::class);
+}
+
     protected $table = 'items';
 
     //The primary key associated with the table
     protected $primaryKey = 'item_id';
+
+
 
 
 
