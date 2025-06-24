@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ItemsController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\InventoryController;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 
@@ -29,7 +30,17 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
         Route::get('/item/{id}',   'show');
         Route::put('/item/{id}',   'update');
         Route::delete('/item/{id}','destroy');
-    });
+ });
+
+
+    //Inventory Routes
+
+
+    Route::controller(InventoryController::class)->group(function () {
+        Route::get('/inventory',        'index');
+        Route::post('/inventory',        'store'); 
+        Route::delete('/inventory/{id}','destroy');     
+ });
 
 
              //User Routes

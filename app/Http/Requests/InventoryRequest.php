@@ -11,7 +11,7 @@ class InventoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class InventoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'item_id'    => 'required|exists:items_id',
+                            //check if  table exist to get the  item_id (foreign key)
+           'item_id'    => 'required|exists:items',
            'quantity'   => 'required|integer|min:1',
         ];
     }

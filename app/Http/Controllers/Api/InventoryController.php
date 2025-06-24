@@ -14,7 +14,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return Inventory::All();
+         return Inventory::with(['item', 'user'])->get();
     }
 
    
@@ -27,7 +27,6 @@ class InventoryController extends Controller
            $validated = $request->validated();
 
            $validated["user_id"] = $request->user()->id;
-           $validated["item_id"] = $request->item_id;
 
 
           $inventory = Inventory::create($validated);
@@ -44,6 +43,14 @@ class InventoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+         $invItem = Inventory::findOrFail($id);
+
+         $invItem -> delete();
+
+         $response = ['message' => 'Succesfully Deleted Inventory Item'];
+
+
+        return $response;
+
     }
 }
