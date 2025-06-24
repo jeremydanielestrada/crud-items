@@ -22,8 +22,6 @@ class InventoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-                            //check if  table exist to get the  item_id (foreign key)
-           'item_id'    => 'required|exists:items',
            'quantity'   => 'required|integer|min:1',
         ];
     }

@@ -19,7 +19,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 
 
- //Private API's
+ //Private API's                //Use to enable request to the frontend
  Route::middleware([EnsureFrontendRequestsAreStateful::class, 'auth:sanctum'])->group(function () {
          Route::post('/logout',        [ AuthController::class, 'logout']);
 
@@ -34,11 +34,9 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 
     //Inventory Routes
-
-
     Route::controller(InventoryController::class)->group(function () {
         Route::get('/inventory',        'index');
-        Route::post('/inventory',        'store'); 
+        Route::post('/inventory/{id}',        'store'); 
         Route::delete('/inventory/{id}','destroy');     
  });
 
