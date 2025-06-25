@@ -7,8 +7,12 @@ use App\Http\Requests\UserRequest;
 use App\Models\Items;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Inventory;
 use App\Http\Requests\ItemsRequest;
+use App\Http\Requests\InventoryRequest;
 use Illuminate\Support\Facades\Storage;
+
+use function Laravel\Prompts\error;
 
 class ItemsController extends Controller
 {
@@ -32,15 +36,28 @@ class ItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ItemsRequest $request)
-    {
-        try {
+   public function store(ItemsRequest $request)
+{
+    try {
         $validated = $request->validated();
 
         $validated['image_path'] = $request->file('image_path')->storePublicly('item', 'public');
         $validated['user_id'] = $request->user()->id;
 
         $item = Items::create($validated);
+
+        // ✅ Ensure quantity exists before using
+        if (!isset($validated['quantity'])) {
+            return response()->json([
+                'message' => 'Quantity is required for inventory',
+            ], 422);
+        }
+
+        Inventory::create([
+            'item_id'  => $item->item_id,
+            'user_id'  => $request->user()->id,
+            'quantity' => $validated['quantity'],
+        ]);
 
         return response()->json($item, 201);
     } catch (\Illuminate\Validation\ValidationException $e) {
@@ -49,9 +66,7 @@ class ItemsController extends Controller
             'errors' => $e->errors(),
         ], 422);
     }
-
-
-    }
+}
 
     /**
      * Display the specified resource.

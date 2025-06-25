@@ -26,6 +26,7 @@ class ItemsRequest extends FormRequest
             'image_path'     => 'required|image|mimes:jpg,gif,png|max:5120',
             'price'          =>'required|numeric',
             'description'    => 'string|nullable|max:255',
+            'quantity'       =>'required|integer|min:1',
         ];
 }
 

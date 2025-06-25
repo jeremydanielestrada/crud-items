@@ -16,6 +16,7 @@ class Items extends Model
 
     //The primary key associated with the table
     protected $primaryKey = 'item_id';
+    public $incrementing = true;
 
 
 

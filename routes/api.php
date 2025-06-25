@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
@@ -25,19 +24,19 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
                 // Items Routes
  Route::controller(ItemsController::class)->group(function () {
-        Route::get('/item',        'index');
-        Route::post('/item',        'store'); 
-        Route::get('/item/{id}',   'show');
-        Route::put('/item/{id}',   'update');
-        Route::delete('/item/{id}','destroy');
+        Route::get('/item',           'index');
+        Route::post('/item',          'store'); 
+        Route::get('/item/{id}',      'show');
+        Route::put('/item/{id}',      'update');
+        Route::delete('/item/{id}',   'destroy');
  });
 
 
     //Inventory Routes
     Route::controller(InventoryController::class)->group(function () {
-        Route::get('/inventory',        'index');
+        Route::get('/inventory',              'index');
         Route::post('/inventory/{id}',        'store'); 
-        Route::delete('/inventory/{id}','destroy');     
+        Route::delete('/inventory/{id}',      'destroy');     
  });
 
 
