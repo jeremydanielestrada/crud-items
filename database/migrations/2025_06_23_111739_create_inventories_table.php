@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('quantity');
 
       // Foreign keys
-        $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
-        $table->foreign('item_id')->references('item_id')->on('items');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('item_id')->references('item_id')->on('items')->onDelete('cascade');
         });
     }
 
