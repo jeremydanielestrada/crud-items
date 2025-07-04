@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 
-class UserController extends Controller
+class       UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -69,7 +69,8 @@ class UserController extends Controller
 
         $validated = $request->validated();
 
-        $user->name = $validated['name'];
+        $user->first_name = $validated['first_name'];
+        $user->last_name = $validated['last_name'];
 
         $user->save();
 

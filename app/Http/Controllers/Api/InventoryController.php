@@ -13,9 +13,12 @@ class InventoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-         return Inventory::with(['item', 'user'])->get();
+        $perPage = $request -> get('per_page', 10);
+        
+        return Inventory::with(['item', 'user'])->paginate($perPage);
+
     }
 
    

@@ -40,8 +40,8 @@ class UserRequest extends FormRequest
         }
         else if(request()->routeIs("user.update")) {
              return [
-            "firstname"      => "required|string|max:255",
-            "lastname"      => "required|string|max:255",
+            "first_name"      => "required|string|max:255",
+            "last_name"      => "required|string|max:255",
         ];
     }  else if(request()->routeIs("user.email")) {
              return [

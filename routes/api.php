@@ -42,7 +42,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
              //User Routes
  Route::controller(UserController::class)->group(function () {
-        Route::get('/user',              'index');
+        Route::get('/user',              'index');      
         Route::get('/user/{id}',         'show');
         Route::put('/user/{id}',         'update')->name('user.update');
         Route::put('/user/email/{id}',   'email')->name('user.email');
@@ -52,6 +52,11 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
         });
 
     //User specific API's
+
+    
+        //Profile
         Route::get('/profile',          [ProfileController::class, 'show']);
         Route::put('/profile/image/',   [ProfileController::class, 'image'])->name('profile.image');
+
+        
 });     
